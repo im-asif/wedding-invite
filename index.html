@@ -8,16 +8,15 @@
     <meta name="description" content="With the blessings of Allah, we invite you to our Wedding Ceremony on May 13th & 14th, 2026.">
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Asif & Shabana are getting married!">
+    <meta property="og:title" content="Fid dunya wal akhirah | Wedding Invitation | Asif & Shabana">
     <meta property="og:description" content="Join us to celebrate our Nikah & Walima on May 13th and 14th, 2026. Click to view our invitation.">
-    
-    <meta property="og:image" content="https://YOUR-GITHUB-USERNAME.github.io/wedding-invitation/preview.jpg">
+    <meta property="og:image" content="https://im-asif.github.io/wedding-invitation/preview.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Infant:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -26,15 +25,14 @@
 
     <style>
         :root {
-            /* Deeper, richer color palette based on feedback for better contrast */
-            --bg-dark: #05160E;      /* Ultra Deep Forest/Emerald Green */
-            --bg-light: #0A2417;     /* Slightly lighter green for cards */
-            --gold-light: #F2E3C6;
-            --gold-main: #C89F4C;    /* Richer, Antique Gold */
-            --gold-dark: #A47A26;    /* Gold for deeper accents */
+            --bg-dark: #01160C;      /* Ultra Deep Forest Green */
+            --bg-light: #0A2417;     /* Lighter green for cards and welcome */
+            --gold-light: #FBF5B7;
+            --gold-main: #D4AF37;
+            --gold-dark: #996515;
             --text-light: #FDFBF7;   /* Ivory/Cream text */
             --glass-bg: rgba(10, 36, 23, 0.4);
-            --glass-border: rgba(197, 155, 74, 0.2);
+            --glass-border: rgba(212, 175, 55, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -54,7 +52,7 @@
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 10px; }
 
-        /* --- Welcome / "Tap to Open" Screen --- */
+        /* --- Welcome / Envelope Screen --- */
         #welcome-screen {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: radial-gradient(circle at center, var(--bg-light), var(--bg-dark));
@@ -63,9 +61,9 @@
             transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
         .welcome-names {
-            font-family: 'Great Vibes', cursive; font-size: 4rem;
+            font-family: 'Cormorant Infant', serif; font-size: 4rem;
             color: var(--gold-main); margin-bottom: 30px;
-            text-shadow: 0 0 20px rgba(197, 155, 74, 0.3);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
         .open-btn {
             background: transparent; border: 1px solid var(--gold-main);
@@ -73,11 +71,10 @@
             padding: 15px 40px; font-size: 1.2rem; letter-spacing: 3px;
             cursor: pointer; border-radius: 50px;
             transition: all 0.4s ease; text-transform: uppercase;
-            position: relative; overflow: hidden;
         }
         .open-btn:hover {
             background: var(--gold-main); color: var(--bg-dark);
-            box-shadow: 0 0 30px rgba(197, 155, 74, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
         /* --- Floating Audio Controller --- */
@@ -109,15 +106,11 @@
         }
 
         /* Typography */
-        .arabic-text {
-            font-family: 'Amiri', serif;
-            white-space: nowrap; /* Forces one line for mobile fix */
-        }
+        .arabic-text { font-family: 'Amiri', serif; }
         .bismillah-arabic {
-            /* Responsive font size clamp for best mobile look */
-            font-size: clamp(2.5rem, 8vw, 4.5rem); 
-            color: var(--gold-main); margin-bottom: 15px; line-height: 1.3;
-            text-shadow: 0 4px 15px rgba(197, 155, 74, 0.2);
+            font-size: 4.5rem; color: var(--gold-main);
+            margin-bottom: 10px; line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
         }
         .bismillah-english {
             font-family: 'Cinzel Decorative', serif; font-size: 0.85rem;
@@ -127,14 +120,14 @@
         /* Quranic Verse Section */
         .quran-verse {
             margin: 60px auto; padding: 40px; max-width: 800px;
-            background: linear-gradient(135deg, rgba(197, 155, 74, 0.05), transparent);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
             border-left: 2px solid var(--gold-main);
             border-right: 2px solid var(--gold-main);
             border-radius: 20px;
         }
         .quran-arabic {
             font-size: 2.2rem; color: var(--gold-light);
-            line-height: 1.9; margin-bottom: 25px; direction: rtl;
+            line-height: 1.8; margin-bottom: 20px; direction: rtl;
         }
         .quran-translation {
             font-size: 1rem; font-style: italic; color: #aaa; line-height: 1.8;
@@ -146,12 +139,11 @@
         }
 
         .couple-names {
-            /* Fix for cursive 'A' looks like small 'a' - Using Great Vibes font with capital A */
-            font-family: 'Great Vibes', cursive;
-            /* Mobile fix: never goes above 6.5rem or below 3.5rem on small screens */
-            font-size: clamp(3.5rem, 11vw, 6.5rem); 
-            white-space: nowrap; line-height: 1.3; margin: 5px 0;
-            background: linear-gradient(to right, #A47A26, #F2DC99, #C89F4C, #F2DC99, #A47A26);
+            /* FIXED FONT with distinct capital A */
+            font-family: 'Cormorant Infant', serif;
+            font-size: clamp(3rem, 12vw, 7rem); 
+            white-space: nowrap; line-height: 1.1; margin: 10px 0;
+            background: linear-gradient(to right, #A47A26, #F9E596, #D4AF37, #F9E596, #A47A26);
             background-size: 200% auto; color: transparent;
             -webkit-background-clip: text; background-clip: text;
             animation: foilShine 6s linear infinite;
@@ -159,12 +151,12 @@
         @keyframes foilShine { to { background-position: 200% center; } }
 
         .parent-names {
-            font-size: 0.8rem; font-weight: 300; text-transform: uppercase;
-            letter-spacing: 4px; margin-bottom: 25px; color: #aaa;
+            font-size: 0.85rem; font-weight: 300; text-transform: uppercase;
+            letter-spacing: 4px; margin-bottom: 30px; color: #aaa;
         }
         .ampersand {
-            font-family: 'Cinzel Decorative', serif; font-size: 2.8rem;
-            color: var(--gold-primary); margin: 5px 0; display: block;
+            font-family: 'Cinzel Decorative', serif; font-size: 3rem;
+            color: var(--gold-main); margin: 10px 0; display: block;
         }
 
         .divider { display: flex; align-items: center; justify-content: center; margin: 80px 0; }
@@ -181,7 +173,6 @@
             font-family: 'Cinzel Decorative', serif; font-size: 2.5rem;
             letter-spacing: 5px; text-transform: uppercase; margin-bottom: 50px;
             color: var(--gold-main);
-            white-space: nowrap; /* Prevent wrapping in one line fix */
         }
 
         .events-grid {
@@ -257,29 +248,11 @@
 
         @media (max-width: 600px) {
             .container { padding: 40px 15px; }
+            .bismillah-arabic { font-size: 3rem; }
             .quran-arabic { font-size: 1.6rem; }
-            .events-grid { gap: 30px; }
             .time-box { width: 70px; height: 80px; }
             .time-num { font-size: 1.8rem; }
             .welcome-names { font-size: 3rem; }
-            /* Mobile fix for "Save The Date" in one line and closer to names */
-            .section-title { 
-                font-size: 2rem;
-                letter-spacing: 3px;
-                margin-top: 20px;
-                margin-bottom: 30px;
-            }
-            .intro-text { margin-top: 40px; margin-bottom: 30px;}
-            
-            /* Countdown mobile one-line fix */
-            .countdown-grid { gap: 10px; }
-            .time-box {
-                width: 65px; height: 75px;
-                border-radius: 12px;
-                border-color: rgba(197, 155, 74, 0.3);
-            }
-            .time-num { font-size: 1.6rem; }
-            .time-label { font-size: 0.65rem; margin-top: 6px; }
         }
 
         /* GSAP Classes */
@@ -335,7 +308,7 @@
         </div>
 
         <div class="countdown-wrapper gsap-reveal">
-            <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">The Big Day Approches</h2>
+            <h2 class="section-title" style="font-size: 1.5rem;">The Big Day Approches</h2>
             <div class="countdown-grid">
                 <div class="time-box"><span class="time-num" id="cd-days">00</span><span class="time-label">Days</span></div>
                 <div class="time-box"><span class="time-num" id="cd-hours">00</span><span class="time-label">Hours</span></div>
@@ -362,7 +335,7 @@
                     <span class="detail-label">Venue</span>
                     <span style="font-size: 1rem; line-height: 1.6; color: #ddd;">Sareya Narendr,<br>Gopalganj</span>
                 </div>
-                <a href="https://maps.google.com/?q=Sareya+Narendr+Gopalganj" target="_blank" class="map-btn">
+                <a href="https://maps.google.com/?q=Sareya+Narendr+Gopalgang" target="_blank" class="map-btn">
                     <i class="fas fa-map-marker-alt"></i> Get Directions
                 </a>
             </div>
@@ -382,7 +355,7 @@
                     <span class="detail-label">Venue</span>
                     <span style="font-size: 1rem; line-height: 1.6; color: #ddd;">Amwa Mahuawa,<br>Sheohar</span>
                 </div>
-                <a href="https://maps.google.com/?q=Amwa+Mahuawa+Sheohar" target="_blank" class="map-btn">
+                <a href="https://maps.google.com/q=Amwa+Mahuawa+Sheohar" target="_blank" class="map-btn">
                     <i class="fas fa-map-marker-alt"></i> Get Directions
                 </a>
             </div>
@@ -424,14 +397,16 @@
         let isPlaying = false;
 
         openBtn.addEventListener('click', () => {
+            // Envelope opening sequence
             welcomeScreen.style.transform = 'translateY(-100vh)';
             
             setTimeout(() => {
                 mainContent.style.opacity = '1';
                 audioControls.classList.add('visible');
-                initGSAPAnimations(); 
+                initGSAPAnimations(); // Start animations only after opening
             }, 500);
 
+            // Audio handling
             bgAudio.volume = 0.5; 
             bgAudio.play().then(() => {
                 isPlaying = true;
@@ -474,12 +449,13 @@
                         scrollTrigger: {
                             trigger: el,
                             start: "top 85%", 
-                            toggleActions: "play none none reverse"
+                            toggleActions: "play none none reverse" // reverse on scroll up
                         }
                     }
                 );
             });
 
+            // Specific staggered animation for event cards
             gsap.fromTo(".event-card",
                 { autoAlpha: 0, y: 100, filter: "blur(6px)" },
                 {
@@ -538,9 +514,9 @@
             constructor() {
                 this.x = Math.random() * window.innerWidth;
                 this.y = Math.random() * window.innerHeight;
-                this.size = Math.random() * 2 + 0.5;
+                this.size = Math.random() * 2 + 0.5; // subtle points
                 this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * -0.5 - 0.2; 
+                this.speedY = Math.random() * -0.5 - 0.2; // float up slowly
                 this.opacity = Math.random() * 0.5 + 0.1;
                 this.pulseSpeed = Math.random() * 0.02 + 0.01;
             }
@@ -548,6 +524,7 @@
                 this.x += this.speedX;
                 this.y += this.speedY;
                 
+                // Pulsing effect
                 this.opacity += Math.sin(Date.now() * this.pulseSpeed) * 0.01;
                 if(this.opacity < 0.1) this.opacity = 0.1;
                 if(this.opacity > 0.8) this.opacity = 0.8;
@@ -561,9 +538,9 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(197, 155, 74, ${this.opacity})`;
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
                 ctx.shadowBlur = 8;
-                ctx.shadowColor = "rgba(197, 155, 74, 0.5)";
+                ctx.shadowColor = "rgba(212, 175, 55, 0.5)";
                 ctx.fill();
             }
         }
