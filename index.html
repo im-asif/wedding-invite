@@ -1432,14 +1432,12 @@
     <div class="corner-ornament bl" aria-hidden="true">✧</div>
     <div class="corner-ornament br" aria-hidden="true">❀</div>
 
-    <!-- Audio Element -->
-    <audio id="bg-audio" src="Bismillah.mp3" loop preload="auto"></audio>
+    <audio id="bg-audio" loop preload="auto"></audio>
 
     <!-- Music Toggle -->
     <button class="music-btn" id="music-btn" aria-label="Toggle ambient music" title="Toggle Music"
         style="display:none;">
-        <span class="music-icon">♪</span>
-        <span class="music-hint" id="music-hint">Tap for Music</span>
+        <span class="music-icon">▶</span>
     </button>
 
     <!-- MAIN CONTENT -->
@@ -1604,13 +1602,19 @@
             var welcomeScreen = document.getElementById('welcome-screen');
             var openBtn = document.getElementById('open-btn');
             var musicBtn = document.getElementById('music-btn');
-            var musicHint = document.getElementById('music-hint');
             var bgAudio = document.getElementById('bg-audio');
             var playing = false;
-            var targetVolume = 0.20;
             var fadeInterval = null;
             var isTouch = window.matchMedia('(pointer: coarse)').matches;
             var isMobile = window.innerWidth < 600;
+            var musicTracks = ['Bismillah.mp3', 'KunfayaKun.mp3', 'ShukranAllah.mp3'];
+            var trackPicked = false;
+
+            function pickRandomTrack() {
+                var idx = Math.floor(Math.random() * musicTracks.length);
+                bgAudio.src = musicTracks[idx];
+                trackPicked = true;
+            }
 
             /* OPEN INVITATION */
             openBtn.addEventListener('click', function () {
@@ -1620,11 +1624,7 @@
                     mainContent.style.transition = 'opacity 1s ease';
                     musicBtn.style.display = 'flex';
                     // Start music automatically on open
-                    fadeAudioIn();
-                    playing = true;
-                    musicBtn.classList.add('playing');
-                    musicBtn.querySelector('.music-icon').textContent = '\u266B';
-                    if (musicHint) musicHint.classList.add('hidden');
+                    startMusic();
                     // Trigger hero reveals
                     document.querySelectorAll('.hero .reveal').forEach(function (el, i) {
                         setTimeout(function () { el.classList.add('active'); }, i * 200);
@@ -1727,7 +1727,6 @@
                 this.alpha = Math.random() * 0.12 + 0.04;
                 this.sway = Math.random() * Math.PI * 2;
                 this.swaySpeed = Math.random() * 0.015;
-                // Random rose hue
                 var hues = ['rgba(212,160,160,', 'rgba(200,140,150,', 'rgba(230,180,180,', 'rgba(180,120,130,'];
                 this.color = hues[Math.floor(Math.random() * hues.length)];
             };
@@ -1799,49 +1798,34 @@
                 }
             }
 
-            /* AMBIENT MUSIC */
-            function fadeAudioIn() {
-                bgAudio.volume = 0;
+            /* AMBIENT MUSIC — Random track, 40% start with gradual increase */
+            function startMusic() {
+                if (playing) return;
+                if (!trackPicked) pickRandomTrack();
+                bgAudio.volume = 0.4;
                 bgAudio.play().then(function () {
                     clearInterval(fadeInterval);
                     fadeInterval = setInterval(function () {
-                        if (bgAudio.volume < targetVolume - 0.01) {
-                            bgAudio.volume = Math.min(bgAudio.volume + 0.005, targetVolume);
+                        if (bgAudio.volume < 0.99) {
+                            bgAudio.volume = Math.min(bgAudio.volume + 0.01, 1);
                         } else {
-                            bgAudio.volume = targetVolume;
+                            bgAudio.volume = 1;
                             clearInterval(fadeInterval);
                         }
-                    }, 50);
+                    }, 80);
                 }).catch(function () { });
-            }
-
-            function fadeAudioOut() {
-                clearInterval(fadeInterval);
-                fadeInterval = setInterval(function () {
-                    if (bgAudio.volume > 0.01) {
-                        bgAudio.volume = Math.max(bgAudio.volume - 0.01, 0);
-                    } else {
-                        bgAudio.volume = 0;
-                        bgAudio.pause();
-                        clearInterval(fadeInterval);
-                    }
-                }, 30);
-            }
-
-            function startMusic() {
-                if (playing) return;
-                fadeAudioIn();
                 playing = true;
                 musicBtn.classList.add('playing');
-                musicBtn.querySelector('.music-icon').textContent = '\u266B';
+                musicBtn.querySelector('.music-icon').textContent = '\u23f8';
             }
 
             function stopMusic() {
                 if (!playing) return;
-                fadeAudioOut();
+                clearInterval(fadeInterval);
+                bgAudio.pause();
                 playing = false;
                 musicBtn.classList.remove('playing');
-                musicBtn.querySelector('.music-icon').textContent = '\u266A';
+                musicBtn.querySelector('.music-icon').textContent = '\u25b6';
             }
 
             musicBtn.addEventListener('click', function (e) {
@@ -1849,11 +1833,6 @@
                 if (!playing) startMusic();
                 else stopMusic();
             });
-
-            // Hide hint after 6 seconds
-            setTimeout(function () {
-                if (musicHint) musicHint.classList.add('hidden');
-            }, 6000);
 
         })();
     </script>
